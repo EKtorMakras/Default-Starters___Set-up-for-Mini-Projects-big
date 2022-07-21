@@ -1,5 +1,7 @@
-//& ---------- Resets ---------- //
+@use 'abstracts'as *;
 
+
+//% ***************  Resets  *************** //
 
 *,
 *::after,
@@ -20,11 +22,11 @@ html {
         font-size: 75%; // 1rem = 12px //
     }
 
-    @include respond (tab-land) {
+    @include respond (tablet-land) {
         font-size: 56.25%; // 1rem = 9px //
     }
 
-    @include respond (tab-port) {
+    @include respond (tablet-port) {
         font-size: 50%; // 1rem = 8px //
     }
 
@@ -35,17 +37,17 @@ html {
     //# ---- ---- //
 }
 
-//& ----------  ---------- //
+//% ***************    *************** //
 
 
 
-//& ---------- Generic Styles ---------- //
 
+//% ***************  Generic Styles  *************** //
 
 body {
     font-family: $ff-primary;
-    font-size: font-size(medium);
-    font-weight: font-weight(regular);
+    font-size: fs(rg);
+    font-weight: fw(regular);
     line-height: 1.5;
     overflow-x: hidden;
 }
@@ -70,9 +72,9 @@ img {
 
 
 p {
-    font-size: font-size(medium);
+    font-size: fs(rg);
     line-height: 1.7;
-    color: color(grey-light-2);
+    color: var(--clr-grey-light-2);
     margin-bottom: 1.25rem;
     max-width: 40em;
 }
@@ -89,43 +91,56 @@ h4 {
     line-height: 1.25;
     margin-bottom: 0.75rem;
     text-align: center;
-    color: color(grey-dark-3);
+    color: var(--clr-grey-dark-3);
 }
 
 
 h1 {
-    font-size: font-size(head-1);
-    font-weight: font-weight(thin);
+    font-size: fs(head-1);
+    font-weight: fw(thin);
 }
 
 
 h2 {
-    font-size: font-size(head-2);
-    font-weight: font-weight(light);
+    font-size: fs(head-2);
+    font-weight: fw(light);
 }
 
 
 h3 {
-    font-size: font-size(head-3);
-    font-weight: font-weight(light);
+    font-size: fs(head-3);
+    font-weight: fw(light);
 }
 
 h4 {
-    font-size: font-size(head-4);
-    font-weight: font-weight(light);
+    font-size: fs(head-4);
+    font-weight: fw(light);
 }
 
 //^ ---  --- //
 
+//% ***************    *************** //
 
 
 
-//& ---------- Utilities---------- //
+
+//% ***************  Utilities  *************** //
+
+// Custom Properties
+:root {
+
+    @each $color,
+    $val in $colors {
+
+        --clr-#{$color}: #{$val};
+    }
+}
 
 
-// clearfix
-.clearfix {
-    @include clearfix;
+// container
+.container {
+    max-width: $max-width;
+    margin-inline: auto;
 }
 
 
@@ -157,10 +172,5 @@ h4 {
     }
 }
 
-// container
-.container {
-    max-width: $max-width;
-}
 
-
-//& ---------- ---------- //
+//% ***************    *************** //
